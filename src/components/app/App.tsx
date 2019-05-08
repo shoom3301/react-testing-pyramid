@@ -8,8 +8,8 @@ import './App.css';
 
 export interface IAppProps {
   count?: number;
-  increment?: any;
-  decrement?: any;
+  increment?: () => void;
+  decrement?: () => void;
 }
 
 export class AppComponent extends Component<IAppProps> {
@@ -45,10 +45,12 @@ function mapStateToProps(state: IState): IAppProps {
   }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  increment: () => dispatch(counterIncrement()),
-  decrement: () => dispatch(counterDecrement())
-});
+function mapDispatchToProps(dispatch: Dispatch): IAppProps {
+  return {
+    increment: () => dispatch(counterIncrement()),
+    decrement: () => dispatch(counterDecrement())
+  }
+}
 
 export const App = connect(
     mapStateToProps,
