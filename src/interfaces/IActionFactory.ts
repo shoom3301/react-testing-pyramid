@@ -1,5 +1,5 @@
 import { Action } from 'redux';
 
 export interface IActionFactory {
-    (): Action;
+    (...argv: any[]): Action;
 }
