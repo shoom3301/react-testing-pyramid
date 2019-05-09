@@ -2,7 +2,7 @@ import React, { Component, ReactNode } from 'react';
 import { connect } from 'react-redux';
 import { appSelector } from '../../store/selectors/app';
 import logo from '../../assets/logo.svg';
-import { Actions } from '../actions/actions';
+import { ActionsLoadable } from '../actions/actions.loadable';
 import { AppContainer, AppHeader, AppLogo } from './app.elements';
 import { IAppProps } from './app.interface';
 
@@ -15,7 +15,7 @@ export class AppComponent extends Component<IAppProps> {
             <p>
               Count: {this.props.count}
             </p>
-            <Actions/>
+            <ActionsLoadable/>
             <p>
               {this.props.saving && 'Saving...'}
             </p>
