@@ -1,18 +1,12 @@
 import React, { Component, ReactNode } from 'react';
 import { connect } from 'react-redux';
+import { appReselector } from '../../store/selectors/app';
 import { IState } from '../../store/state';
 import { Dispatch } from 'redux';
 import logo from '../../assets/logo.svg';
 import { counterIncrement, counterDecrement, counterSave } from '../../store/actions/counter';
-import './App.css';
-
-export interface IAppProps {
-  count?: number;
-  saving?: boolean;
-  increment?: () => void;
-  decrement?: () => void;
-  save?: (count: number) => void;
-}
+import './app.css';
+import { IAppProps, IAppStateProps, IAppDispatchProps } from './app.interface';
 
 export class AppComponent extends Component<IAppProps> {
   saveCount = () => {
@@ -53,14 +47,11 @@ export class AppComponent extends Component<IAppProps> {
   }
 }
 
-function mapStateToProps(state: IState): IAppProps {
-  return {
-    count: state.count,
-    saving: state.saving
-  }
+function mapStateToProps(state: IState): IAppStateProps {
+  return appReselector(state);
 }
 
-function mapDispatchToProps(dispatch: Dispatch): IAppProps {
+function mapDispatchToProps(dispatch: Dispatch): IAppDispatchProps {
   return {
     increment: () => dispatch(counterIncrement()),
     decrement: () => dispatch(counterDecrement()),
