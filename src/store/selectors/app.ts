@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
-import { countSelector } from './count';
-import { savingSelector } from './saving';
+import { countSelector, savingSelector } from './counter';
 
 export const appSelector = createSelector(
     countSelector,

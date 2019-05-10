@@ -1,8 +1,8 @@
 import { IAction } from '../../interfaces/IAction';
 import { CounterActionTypes } from '../actions/counter';
-import { defaultState } from '../state';
+import { defaultCounterState } from '../states/counter';
 
-export function counter(state = defaultState, action: IAction<CounterActionTypes>) {
+export function counter(state = defaultCounterState, action: IAction<CounterActionTypes>) {
     switch (action.type) {
         case CounterActionTypes.INCREMENT:
             return {...state, count: state.count + 1};
