@@ -6,7 +6,7 @@ export const AppContainer = styled.div`
 
 export const AppHeader = styled.header`
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,5 +27,14 @@ export const AppLogo = styled.img`
     to {
       transform: rotate(360deg);
     }
+  }
+`;
+
+
+export const AppNavigation = styled.div`
+  a {
+    display: inline-block;
+    color: #fff;
+    margin: 10px;
   }
 `;
