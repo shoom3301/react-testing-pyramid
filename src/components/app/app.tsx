@@ -1,11 +1,10 @@
 import React, { Component, ReactNode } from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Routes } from '../../routes';
 import { appSelector } from '../../store/selectors/app';
 import logo from '../../assets/logo.svg';
 import { ActionsLoadable } from '../actions/actions.loadable';
-import { RouteX } from '../route-x/route-x';
-import { RouteY } from '../route-y/route-y';
 import { AppContainer, AppHeader, AppLogo, AppNavigation } from './app.elements';
 import { IAppProps } from './app.interface';
 
@@ -28,10 +27,7 @@ export class AppComponent extends Component<IAppProps> {
                         <Link to="/y/">To Y</Link>
                     </AppNavigation>
                 </AppHeader>
-                <Switch>
-                    <Route exact path="/x" component={RouteX}/>
-                    <Route exact path="/y" component={RouteY}/>
-                </Switch>
+                <Routes/>
             </AppContainer>
         );
     }
