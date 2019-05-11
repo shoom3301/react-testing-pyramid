@@ -1,6 +1,5 @@
 import { call, put } from 'redux-saga/effects';
-import { createQuoteOnServer } from '../../helpers/quotes/createQuoteOnServer';
-import { fetchQuoteFromServer } from '../../helpers/quotes/fetchQuoteFromServer';
+import { createQuote, loadQuote } from '../../helpers/quotes/quotesHttp';
 import {
     CreateQuoteAction,
     quoteCreateSuccess,
@@ -19,7 +18,7 @@ export function* quotesMiddleware() {
 
 export function* quoteCreation(action: CreateQuoteAction) {
     try {
-        const newQuote = yield call(createQuoteOnServer, action.payload);
+        const newQuote = yield call(createQuote, action.payload);
 
         yield put(quoteCreateSuccess(newQuote));
     } catch (error) {
@@ -37,7 +36,7 @@ export function quoteFetchingFail(action: QuoteFetchFailAction) {
 
 export function* quoteFetching(action: QuoteFetchOneAction) {
     try {
-        const quote = yield call(fetchQuoteFromServer, action.payload);
+        const quote = yield call(loadQuote, action.payload);
 
         yield put(quoteFetchSuccess(quote));
     } catch (error) {
