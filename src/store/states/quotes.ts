@@ -1,9 +1,5 @@
 import { IQuote } from '../../interfaces/IQuote';
 
-export interface IQuotesState {
-    quotes: IQuote[];
-}
+export type QuotesState = IQuote[];
 
-export const defaultQuotesState: IQuotesState = {
-    quotes: []
-};
+export const defaultQuotesState: QuotesState = [];

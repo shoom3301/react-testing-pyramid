@@ -4,9 +4,14 @@ import { sagaMiddleware, runSaga } from './middlewares';
 import { reducers } from './reducers';
 import { history } from 'router/router';
 
+// @ts-ignore
+const devToolsEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+
+const composeEnhancers = devToolsEnhancers || compose;
+
 export const store = createStore(
     reducers,
-    compose(
+    composeEnhancers(
         applyMiddleware(
             routerMiddleware(history),
             sagaMiddleware

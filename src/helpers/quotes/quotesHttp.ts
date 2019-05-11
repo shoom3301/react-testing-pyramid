@@ -10,5 +10,5 @@ export function loadQuote(id: QuoteId): AxiosPromise<IQuote> {
 }
 
 export function createQuote(quote: IQuoteBlank): AxiosPromise<IQuote> {
-    return axios.post('/api/quote', {data: quote}).then(({data}) => data);
+    return axios.post('/api/quote', quote).then(({data}) => data);
 }

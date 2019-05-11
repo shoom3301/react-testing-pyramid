@@ -1,29 +1,26 @@
 import { IAction } from '../../interfaces/IAction';
 import { QuotesActionTypes, QuoteFetchOneSuccessAction } from '../actions/quotes';
-import { defaultQuotesState } from '../states/quotes';
+import { defaultQuotesState, QuotesState } from '../states/quotes';
 
-export function quotes(state = defaultQuotesState, action: IAction<QuotesActionTypes>) {
+export function quotes(state = defaultQuotesState, action: IAction<QuotesActionTypes>): QuotesState {
     switch (action.type) {
         case QuotesActionTypes.FETCH_ALL_SUCCESS: {
-            return {quotes: action.payload};
+            return [...action.payload];
         }
 
         case QuotesActionTypes.CREATED_SUCCESS: {
-            return {quotes: [...state.quotes, action.payload]};
+            return [...state, action.payload];
         }
 
         case QuotesActionTypes.FETCH_ONE_SUCCESS: {
             const quote = (action as QuoteFetchOneSuccessAction).payload;
-            const {quotes} = state;
-            const existing = quotes.find(({id}) => id === quote.id);
+            const existing = state.find(({id}) => id === quote.id);
 
             if (existing) {
                 return state;
             }
 
-            return {
-                quotes: [...quotes, quote]
-            }
+            return [...state, quote];
         }
 
         default:

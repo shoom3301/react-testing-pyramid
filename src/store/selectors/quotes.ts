@@ -3,13 +3,9 @@ import { createSelector } from 'reselect';
 import { quotePageRoute, quoteIdParam } from 'router/routerPaths';
 import { QuoteId, IQuote } from '../../interfaces/IQuote';
 import { IState } from '../states';
-import { IQuotesState } from '../states/quotes';
+import { QuotesState } from '../states/quotes';
 
-export function quotesSelector({quotes}: IState): IQuotesState {
-    return quotes;
-}
-
-export const getQuotesList = createSelector(quotesSelector, ({quotes}) => quotes);
+export const getQuotesList = ({quotes}: IState): QuotesState => quotes;
 
 export const getQuoteIdMatch = createMatchSelector<IState, {quoteId: string}>(
     quotePageRoute(`:${quoteIdParam}`)

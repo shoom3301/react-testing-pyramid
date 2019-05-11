@@ -1,7 +1,7 @@
 import { RouterState } from 'connected-react-router';
-import { IQuotesState } from './quotes';
+import { QuotesState } from './quotes';
 
 export interface IState {
-    quotes: IQuotesState;
+    quotes: QuotesState;
     router: RouterState;
 }
