@@ -19,7 +19,7 @@ export class QuoteCreateFormComponent extends Component<IQuoteCreateFormProps> {
                 </Box>
                 <Box>
                     <Label>Текст:</Label>
-                    <UIInput />
+                    <UIInput as="textarea" />
                 </Box>
                 <Box>
                     <UIButton>Создать</UIButton>
