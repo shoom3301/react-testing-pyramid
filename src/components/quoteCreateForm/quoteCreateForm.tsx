@@ -13,6 +13,7 @@ import {
 } from './quoteCreateForm.interface';
 import { FormContainer, CloseForm, Box, Title, Label } from './qutesCreateForm.elements';
 
+// FIXME: make it as pure component
 export class QuoteCreateFormComponent extends Component<IQuoteCreateFormProps, IQuoteCreateFormState> {
     static defaultState: IQuoteCreateFormState = {text: '', author: '', isValid: null};
 
