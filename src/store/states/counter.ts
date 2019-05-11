@@ -1,6 +1,6 @@
-export interface ICounterState {
+export type CounterState = {
     count: number;
     saving: boolean;
 }
 
-export const defaultCounterState: ICounterState = {count: 0, saving: false};
+export const defaultCounterState: CounterState = {count: 0, saving: false};

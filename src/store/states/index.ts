@@ -1,5 +1,7 @@
-import { ICounterState } from './counter';
+import { CounterState } from './counter';
+import { IQuotesState } from './quotes';
 
 export interface IState {
-    counter: ICounterState;
+    counter: CounterState;
+    quotes: IQuotesState;
 }

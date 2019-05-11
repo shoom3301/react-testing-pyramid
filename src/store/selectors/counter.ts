@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 import { IState } from '../states';
-import { ICounterState } from '../states/counter';
+import { CounterState } from '../states/counter';
 
-export function counterSelector(state: IState): ICounterState {
+export function counterSelector(state: IState): CounterState {
     return state.counter;
 }
 

@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { quotesSelector } from '../../store/selectors/quotes';
+import { IQuotesProps } from './quotesList.interface';
 import { QuoteItem, QuoteText, QuoteAuthor } from './qutesList.elements';
 
-export class QuotesListComponent extends Component<void> {
+export class QuotesListComponent extends Component<IQuotesProps> {
     render(): React.ReactElement {
         return (
             <div>
-                <QuoteItem>
-                    <QuoteText>Start</QuoteText>
-                    <br />
-                    <QuoteAuthor>Typing</QuoteAuthor>
-                </QuoteItem>
-                <QuoteItem>
-                    <QuoteText>Start</QuoteText>
-                    <br />
-                    <QuoteAuthor>Typing</QuoteAuthor>
-                </QuoteItem>
+                {this.props.quotes.map(({text, author, id}) => (
+                    <QuoteItem key={id}>
+                        <QuoteText>{text}</QuoteText>
+                        <br />
+                        <QuoteAuthor>{author}</QuoteAuthor>
+                    </QuoteItem>
+                ))}
             </div>
         );
     }
 }
 
-export const QuotesList = connect()(QuotesListComponent);
+export const QuotesList = connect(quotesSelector)(QuotesListComponent);
