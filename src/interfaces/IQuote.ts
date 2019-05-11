@@ -3,6 +3,8 @@ export interface IQuoteBlank {
     author: string;
 }
 
+export type QuoteId = number;
+
 export interface IQuote extends IQuoteBlank {
-    id: number;
+    id: QuoteId;
 }
