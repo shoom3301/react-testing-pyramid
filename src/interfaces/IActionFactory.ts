@@ -1,5 +1,5 @@
-import { Action } from 'redux';
+import { IAction } from './IAction';
 
-export interface IActionFactory {
-    (...argv: any[]): Action;
+export interface IActionFactory<T, R = any> {
+    (...argv: any[]): IAction<T, R>;
 }

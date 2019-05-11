@@ -1,4 +1,4 @@
-export interface IAction<T> {
+export interface IAction<T, R = any> {
     type: T;
-    payload?: any;
+    payload: R;
 }

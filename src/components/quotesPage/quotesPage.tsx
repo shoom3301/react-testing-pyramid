@@ -23,7 +23,7 @@ export class QuotesPageComponent extends Component<void, IQuotesPageState> {
                 <div>
                     { this.state.formIsOpened
                         ? <QuoteCreateForm onClose={this.toggleForm} />
-                        : <UIButton onClick={this.toggleForm}>Добавить цитату</UIButton>
+                        : <UIButton onClick={this.toggleForm}>Add quote</UIButton>
                     }
                 </div>
             </QuotesPageContainer>
