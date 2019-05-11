@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const QuoteItem = styled.a`
+export const QuoteItem = styled(Link)`
     margin-bottom: 10px;
     padding: 10px;
     border: 1px solid #e1e1e1;

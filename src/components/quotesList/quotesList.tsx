@@ -9,7 +9,7 @@ export class QuotesListComponent extends Component<IQuotesProps> {
         return (
             <div>
                 {this.props.quotes.map(({text, author, id}) => (
-                    <QuoteItem key={id}>
+                    <QuoteItem key={id} to={`/quote/${id}`}>
                         <QuoteText>{text}</QuoteText>
                         <br />
                         <QuoteAuthor>{author}</QuoteAuthor>
