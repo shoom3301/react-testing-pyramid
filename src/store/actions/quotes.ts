@@ -6,18 +6,26 @@ export enum QuotesActionTypes {
     CREATED_SUCCESS = 'CREATED_SUCCESS',
     CREATED_FAIL = 'CREATED_FAIL',
     FETCH_ONE = 'FETCH_ONE',
-    FETCH_SUCCESS = 'FETCH_SUCCESS',
-    FETCH_FAIL = 'FETCH_FAIL',
+    FETCH_ONE_SUCCESS = 'FETCH_ONE_SUCCESS',
+    FETCH_ONE_FAIL = 'FETCH_ONE_FAIL',
+    FETCH_ALL = 'FETCH_ALL',
+    FETCH_ALL_SUCCESS = 'FETCH_ALL_SUCCESS',
+    FETCH_ALL_FAIL = 'FETCH_ALL_FAIL',
 }
 
-export type CreateQuoteAction = IAction<QuotesActionTypes.CREATE, IQuoteBlank>;
+export type QuoteCreateAction = IAction<QuotesActionTypes.CREATE, IQuoteBlank>;
 export type QuoteCreateSuccessAction = IAction<QuotesActionTypes.CREATED_SUCCESS, IQuote>;
 export type QuoteCreateFailAction = IAction<QuotesActionTypes.CREATED_FAIL, Error>;
-export type QuoteFetchOneAction = IAction<QuotesActionTypes.FETCH_ONE, QuoteId>;
-export type QuoteFetchSuccessAction = IAction<QuotesActionTypes.FETCH_SUCCESS, IQuote>;
-export type QuoteFetchFailAction = IAction<QuotesActionTypes.FETCH_FAIL, Error>;
 
-export function createQuote(quote: IQuoteBlank): CreateQuoteAction {
+export type QuoteFetchOneAction = IAction<QuotesActionTypes.FETCH_ONE, QuoteId>;
+export type QuoteFetchOneSuccessAction = IAction<QuotesActionTypes.FETCH_ONE_SUCCESS, IQuote>;
+export type QuoteFetchOneFailAction = IAction<QuotesActionTypes.FETCH_ONE_FAIL, Error>;
+
+export type QuoteFetchAllAction = IAction<QuotesActionTypes.FETCH_ALL>;
+export type QuoteFetchAllSuccessAction = IAction<QuotesActionTypes.FETCH_ALL_SUCCESS, IQuote[]>;
+export type QuoteFetchAllFailAction = IAction<QuotesActionTypes.FETCH_ALL_FAIL, Error>;
+
+export function quoteCreate(quote: IQuoteBlank): QuoteCreateAction {
     return {
         type: QuotesActionTypes.CREATE,
         payload: quote
@@ -45,16 +53,37 @@ export function quoteFetchOne(quoteId: QuoteId): QuoteFetchOneAction {
     };
 }
 
-export function quoteFetchSuccess(quote: IQuote): QuoteFetchSuccessAction {
+export function quoteFetchOneSuccess(quote: IQuote): QuoteFetchOneSuccessAction {
     return {
-        type: QuotesActionTypes.FETCH_SUCCESS,
+        type: QuotesActionTypes.FETCH_ONE_SUCCESS,
         payload: quote
     };
 }
 
-export function quoteFetchError(error: Error): QuoteFetchFailAction {
+export function quoteFetchOneError(error: Error): QuoteFetchOneFailAction {
     return {
-        type: QuotesActionTypes.FETCH_FAIL,
+        type: QuotesActionTypes.FETCH_ONE_FAIL,
+        payload: error
+    };
+}
+
+export function quoteFetchAll(): QuoteFetchAllAction {
+    return {
+        type: QuotesActionTypes.FETCH_ALL,
+        payload: undefined
+    };
+}
+
+export function quoteFetchAllSuccess(quotes: IQuote[]): QuoteFetchAllSuccessAction {
+    return {
+        type: QuotesActionTypes.FETCH_ALL_SUCCESS,
+        payload: quotes
+    };
+}
+
+export function quoteFetchAllError(error: Error): QuoteFetchAllFailAction {
+    return {
+        type: QuotesActionTypes.FETCH_ALL_FAIL,
         payload: error
     };
 }

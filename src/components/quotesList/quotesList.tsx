@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { quotesSelector } from '../../store/selectors/quotes';
 import { IQuotesProps } from './quotesList.interface';
 import { QuoteItem, QuoteText, QuoteAuthor } from './qutesList.elements';
 
+// FIXME: make it as pure component
 export class QuotesListComponent extends Component<IQuotesProps> {
     render(): React.ReactElement {
         return (
@@ -20,4 +20,4 @@ export class QuotesListComponent extends Component<IQuotesProps> {
     }
 }
 
-export const QuotesList = connect(quotesSelector)(QuotesListComponent);
+export const QuotesList = connect()(QuotesListComponent);

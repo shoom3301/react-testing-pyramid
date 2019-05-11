@@ -9,6 +9,8 @@ export function quotesSelector({quotes}: IState): IQuotesState {
     return quotes;
 }
 
+export const getQuotesList = createSelector(quotesSelector, ({quotes}) => quotes);
+
 export const getQuoteIdMatch = createMatchSelector<IState, {quoteId: string}>(
     quotePageRoute(`:${quoteIdParam}`)
 );
@@ -29,8 +31,8 @@ export const getQuoteIdByLocation = createSelector(getQuoteIdMatch, match => {
 
 export const getCurrentQuoteByLocation = createSelector(
     getQuoteIdByLocation,
-    quotesSelector,
-    (quoteId: QuoteId | null, {quotes}: IQuotesState) => {
+    getQuotesList,
+    (quoteId: QuoteId | null, quotes: IQuote[]) => {
         if (quoteId === null) {
             return null;
         }
@@ -49,3 +51,5 @@ export const quotePageSelector = createSelector(
         }
     }
 );
+
+export const quotesPageSelector = createSelector(getQuotesList, quotes => ({quotes}));

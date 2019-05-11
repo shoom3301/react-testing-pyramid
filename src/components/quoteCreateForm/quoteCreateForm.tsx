@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { UIButton } from 'ui-elements/button';
 import { UIInput } from 'ui-elements/input';
-import { createQuote } from 'store/actions/quotes';
+import { quoteCreate } from 'store/actions/quotes';
 import { authorIsValid, textIsValid } from '../../helpers/quotes/quoteValidation';
 import { IQuoteBlank } from '../../interfaces/IQuote';
 import {
@@ -86,7 +86,7 @@ export class QuoteCreateFormComponent extends Component<IQuoteCreateFormProps, I
 
 function mapDispatchToProps(dispatch: Dispatch): IQuoteCreateFormDispatchProps {
     return {
-        create: (quote: IQuoteBlank) => dispatch(createQuote(quote))
+        create: (quote: IQuoteBlank) => dispatch(quoteCreate(quote))
     }
 }
 
