@@ -9,4 +9,5 @@ export interface IQuoteCreateFormProps extends IQuoteCreateFormDispatchProps {
 }
 
 export interface IQuoteCreateFormState extends IQuoteBlank {
+    isValid?: boolean | null;
 }

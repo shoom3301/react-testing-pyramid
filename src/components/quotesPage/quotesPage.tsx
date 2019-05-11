@@ -7,9 +7,9 @@ import { IQuotesPageState } from './quotesPage.interface';
 import { QuotesPageTitle, QuotesPageContainer } from './qutesPage.elements';
 
 export class QuotesPageComponent extends Component<void, IQuotesPageState> {
-    state: IQuotesPageState = {
-        formIsOpened: false
-    };
+    static defaultState: IQuotesPageState = {formIsOpened: true};
+
+    state = QuotesPageComponent.defaultState;
 
     toggleForm = () => {
         this.setState({formIsOpened: !this.state.formIsOpened});
@@ -18,7 +18,7 @@ export class QuotesPageComponent extends Component<void, IQuotesPageState> {
     render(): React.ReactElement {
         return (
             <QuotesPageContainer>
-                <QuotesPageTitle>Quotes list</QuotesPageTitle>
+                <QuotesPageTitle>Цитаты великих людей</QuotesPageTitle>
                 <QuotesList />
                 <div>
                     { this.state.formIsOpened

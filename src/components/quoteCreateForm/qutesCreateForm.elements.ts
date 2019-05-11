@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const FormContainer = styled.div`
     display: block;
@@ -20,12 +20,17 @@ export const CloseForm = styled.button`
     cursor: pointer;
 `;
 
-export const Box = styled.div`
+export const Box = styled.div<{error?: boolean}>`
     margin-bottom: 15px;
 
     :last-child {
         margin-bottom: 0;
     }
+
+    ${({error}) => error && css`
+        color: #d52315;
+        font-size: 13px;
+    `}
 `;
 
 export const Title = styled.h3`
