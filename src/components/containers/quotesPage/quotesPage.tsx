@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { quoteFetchAll } from '../../../store/actions/quotes';
+import { IQuoteBlank } from '../../../interfaces/IQuote';
+import { quoteFetchAll, quoteCreate } from '../../../store/actions/quotes';
 import { quotesPageSelector } from '../../../store/selectors/quotes';
 import { UIButton } from '../../../ui-elements/button';
 import { QuoteCreateForm } from '../../pure/quoteCreateForm/quoteCreateForm';
@@ -29,7 +30,7 @@ export class QuotesPageComponent extends Component<IQuotesPageProps, IQuotesPage
                 <QuotesList quotes={this.props.quotes}/>
                 <div>
                     { this.state.formIsOpened
-                        ? <QuoteCreateForm onClose={this.toggleForm} />
+                        ? <QuoteCreateForm onClose={this.toggleForm} onSubmit={this.props.createQuote}/>
                         : <UIButton onClick={this.toggleForm}>Добавить цитату</UIButton>
                     }
                 </div>
@@ -40,7 +41,8 @@ export class QuotesPageComponent extends Component<IQuotesPageProps, IQuotesPage
 
 function mapDispatchToProps(dispatch: Dispatch): IQuotesPageDispatchProps {
     return {
-        fetchAll: () => dispatch(quoteFetchAll())
+        fetchAll: () => dispatch(quoteFetchAll()),
+        createQuote: (quote: IQuoteBlank) => dispatch(quoteCreate(quote))
     }
 }
 

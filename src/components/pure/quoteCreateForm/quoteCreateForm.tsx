@@ -1,23 +1,14 @@
-import React, { Component, ChangeEvent } from 'react';
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
+import React, { ChangeEvent, PureComponent } from 'react';
 import { UIButton } from 'ui-elements/button';
 import { UIInput } from 'ui-elements/input';
-import { quoteCreate } from 'store/actions/quotes';
 import { authorIsValid, textIsValid } from 'helpers/quotes/quoteValidation';
-import { IQuoteBlank } from 'interfaces/IQuote';
-import {
-    IQuoteCreateFormProps,
-    IQuoteCreateFormState,
-    IQuoteCreateFormDispatchProps
-} from './quoteCreateForm.interface';
+import { IQuoteCreateFormProps, IQuoteCreateFormState } from './quoteCreateForm.interface';
 import { FormContainer, CloseForm, Box, Title, Label } from './qutesCreateForm.elements';
 
-// FIXME: make it as pure component
-export class QuoteCreateFormComponent extends Component<IQuoteCreateFormProps, IQuoteCreateFormState> {
+export class QuoteCreateForm extends PureComponent<IQuoteCreateFormProps, IQuoteCreateFormState> {
     static defaultState: IQuoteCreateFormState = {text: '', author: '', isValid: null};
 
-    state = QuoteCreateFormComponent.defaultState;
+    state = QuoteCreateForm.defaultState;
 
     createQuote = () => {
         if (this.state.isValid !== true) {
@@ -26,8 +17,8 @@ export class QuoteCreateFormComponent extends Component<IQuoteCreateFormProps, I
 
         const {text, author} = this.state;
 
-        this.props.create({text, author});
-        this.setState(QuoteCreateFormComponent.defaultState);
+        this.props.onSubmit({text, author});
+        this.setState(QuoteCreateForm.defaultState);
     };
 
     onChangeAuthor = (event: ChangeEvent<HTMLInputElement>) => {
@@ -84,11 +75,3 @@ export class QuoteCreateFormComponent extends Component<IQuoteCreateFormProps, I
         );
     }
 }
-
-function mapDispatchToProps(dispatch: Dispatch): IQuoteCreateFormDispatchProps {
-    return {
-        create: (quote: IQuoteBlank) => dispatch(quoteCreate(quote))
-    }
-}
-
-export const QuoteCreateForm = connect(null, mapDispatchToProps)(QuoteCreateFormComponent);
