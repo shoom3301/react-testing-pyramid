@@ -34,7 +34,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "pact:publish": "node pact/pact.publish.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,7 +52,12 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "watchPathIgnorePatterns": ["<rootDir>/pact/"]
+  },
   "devDependencies": {
+    "@pact-foundation/pact": "^8.2.2",
+    "@pact-foundation/pact-node": "^8.2.0",
     "@types/react-test-renderer": "^16.8.1",
     "http-proxy-middleware": "^0.19.1",
     "react-test-renderer": "^16.8.6"

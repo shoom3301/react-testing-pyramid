@@ -1,0 +1,13 @@
+{
+  "pactConfig": {
+    "consumer": "Front react service",
+    "provider": "react-testing-pyramid",
+    "port": 1234
+  },
+  "pactBrokerConfig": {
+    "pactBrokerUrl": "https://test.pact.dius.com.au",
+    "pactBrokerUsername": "dXfltyFMgNOFZAxr8io9wJ37iUpY42M",
+    "pactBrokerPassword": "O5AIZWxelWbLvqMd8PkAVycBJh2Psyg1"
+  },
+  "providerProxyPort": 8999
+}
