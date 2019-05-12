@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuotesList - компонент списка цитат Snapshot of component is match 1`] = `
+<div>
+  <a
+    className="sc-bdVaJa dvUrPw"
+    href="/quote/1"
+    onClick={[Function]}
+  >
+    <span
+      className="sc-bwzfXH cgDlUj"
+    >
+      Hakuna matata!
+    </span>
+    <br />
+    <span
+      className="sc-htpNat kaHVia"
+    >
+      Pumba
+    </span>
+  </a>
+  <a
+    className="sc-bdVaJa dvUrPw"
+    href="/quote/2"
+    onClick={[Function]}
+  >
+    <span
+      className="sc-bwzfXH cgDlUj"
+    >
+      Developers developers developers!
+    </span>
+    <br />
+    <span
+      className="sc-htpNat kaHVia"
+    >
+      Steve Ballmer
+    </span>
+  </a>
+  <a
+    className="sc-bdVaJa dvUrPw"
+    href="/quote/3"
+    onClick={[Function]}
+  >
+    <span
+      className="sc-bwzfXH cgDlUj"
+    >
+      Just do it!
+    </span>
+    <br />
+    <span
+      className="sc-htpNat kaHVia"
+    >
+      Shia LaBeouf
+    </span>
+  </a>
+</div>
+`;
