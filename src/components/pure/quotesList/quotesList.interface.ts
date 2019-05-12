@@ -1,8 +1,5 @@
 import { IQuote } from '../../../interfaces/IQuote';
 
-export interface IQuotesListState {
+export interface IQuotesProps {
     quotes: IQuote[];
-}
-
-export interface IQuotesProps extends IQuotesListState {
 }

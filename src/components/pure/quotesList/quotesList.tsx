@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { PureComponent } from 'react';
 import { IQuotesProps } from './quotesList.interface';
 import { QuoteItem, QuoteText, QuoteAuthor } from './qutesList.elements';
 
-// FIXME: make it as pure component
-export class QuotesListComponent extends Component<IQuotesProps> {
+export class QuotesList extends PureComponent<IQuotesProps> {
     render(): React.ReactElement {
         return (
             <div>
@@ -19,5 +17,3 @@ export class QuotesListComponent extends Component<IQuotesProps> {
         );
     }
 }
-
-export const QuotesList = connect()(QuotesListComponent);
