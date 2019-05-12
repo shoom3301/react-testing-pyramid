@@ -1,4 +1,4 @@
-import { QuoteId, IQuote } from '../../interfaces/IQuote';
+import { QuoteId, IQuote } from '../../../interfaces/IQuote';
 
 export interface IQuotePageDispatchProps {
     fetchQuote(quoteId: QuoteId): void;

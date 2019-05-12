@@ -1,4 +1,4 @@
-import { IQuoteBlank } from '../../interfaces/IQuote';
+import { IQuoteBlank } from '../../../interfaces/IQuote';
 
 export interface IQuoteCreateFormDispatchProps {
     create: (quote: IQuoteBlank) => void;

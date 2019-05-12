@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { quotePageSelector } from 'store/selectors/quotes';
-import { QuoteId } from '../../interfaces/IQuote';
-import { mainRoute } from '../../router/routerPaths';
-import { quoteFetchOne } from '../../store/actions/quotes';
+import { QuoteId } from '../../../interfaces/IQuote';
+import { mainRoute } from '../../../router/routerPaths';
+import { quoteFetchOne } from '../../../store/actions/quotes';
 import { QuotePageContainer, QuoteText, QuoteAuthor, ToMain } from './quotePage.elements';
 import { IQuotePageProps, IQuotePageDispatchProps } from './quotePage.interface';
 

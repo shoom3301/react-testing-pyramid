@@ -4,8 +4,8 @@ import { Dispatch } from 'redux';
 import { UIButton } from 'ui-elements/button';
 import { UIInput } from 'ui-elements/input';
 import { quoteCreate } from 'store/actions/quotes';
-import { authorIsValid, textIsValid } from '../../helpers/quotes/quoteValidation';
-import { IQuoteBlank } from '../../interfaces/IQuote';
+import { authorIsValid, textIsValid } from 'helpers/quotes/quoteValidation';
+import { IQuoteBlank } from 'interfaces/IQuote';
 import {
     IQuoteCreateFormProps,
     IQuoteCreateFormState,

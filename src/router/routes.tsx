@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
-import { QuotePageLoadable } from '../components/quotePage/quotePage.loadable';
-import { QuotesPageLoadable } from '../components/quotesPage/quotesPage.loadable';
+import { QuotePageLoadable } from '../components/containers/quotePage/quotePage.loadable';
+import { QuotesPageLoadable } from '../components/containers/quotesPage/quotesPage.loadable';
 import { mainRoute, quotePageRoute, quoteIdParam } from './routerPaths';
 
 export const Routes = (): JSX.Element => (

@@ -3,7 +3,7 @@ import Loadable from 'react-loadable';
 
 export const QuotesPageLoadable = Loadable({
     loader() {
-        return import('components/quotesPage/quotesPage');
+        return import('components/containers/quotesPage/quotesPage');
     },
     render({QuotesPage}, props) {
         return <QuotesPage {...props}/>;

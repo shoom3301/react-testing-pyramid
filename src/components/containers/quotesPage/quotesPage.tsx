@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { quoteFetchAll } from '../../store/actions/quotes';
-import { quotesPageSelector } from '../../store/selectors/quotes';
-import { UIButton } from '../../ui-elements/button';
-import { QuoteCreateForm } from '../quoteCreateForm/quoteCreateForm';
-import { QuotesList } from '../quotesList/quotesList';
+import { quoteFetchAll } from '../../../store/actions/quotes';
+import { quotesPageSelector } from '../../../store/selectors/quotes';
+import { UIButton } from '../../../ui-elements/button';
+import { QuoteCreateForm } from '../../pure/quoteCreateForm/quoteCreateForm';
+import { QuotesList } from '../../pure/quotesList/quotesList';
 import { IQuotesPageState, IQuotesPageDispatchProps, IQuotesPageProps } from './quotesPage.interface';
 import { QuotesPageTitle, QuotesPageContainer } from './qutesPage.elements';
 
