@@ -8,7 +8,7 @@ import { QuotesState } from '../states/quotes';
 export const getQuotesList = ({quotes}: IState): QuotesState => quotes;
 
 export const getQuoteIdMatch = createMatchSelector<IState, {quoteId: string}>(
-    quotePageRoute(`:${quoteIdParam}`)
+    quotePageRoute()
 );
 
 export const getQuoteIdByLocation = createSelector(getQuoteIdMatch, match => {
