@@ -52,6 +52,8 @@
     ]
   },
   "devDependencies": {
-    "http-proxy-middleware": "^0.19.1"
+    "@types/react-test-renderer": "^16.8.1",
+    "http-proxy-middleware": "^0.19.1",
+    "react-test-renderer": "^16.8.6"
   }
 }
