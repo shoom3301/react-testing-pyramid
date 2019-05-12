@@ -8,20 +8,26 @@ import { loadQuotesList, loadQuote, createQuote } from '../quotesHttp';
 describe('Запросы к API цитат', () => {
     let provider: Pact;
 
-    beforeAll( () => {
+    beforeAll( async () => {
         axios.defaults.baseURL = `http://localhost:${pactConfig.port}`;
 
         provider = getProvider();
 
-        return provider.setup();
+        await provider.setup();
     });
 
-    afterAll(() => provider.finalize());
+    afterAll(async () => {
+        await provider.finalize();
+    });
 
-    beforeEach(() => provider.removeInteractions());
-    afterEach(() => provider.verify());
+    beforeEach(async () => {
+        await provider.removeInteractions();
+    });
+    afterEach(async () => {
+        await provider.verify();
+    });
 
-    it('loadQuotesList() - запрашивает список цитат из api',  () => {
+    it('loadQuotesList() - запрашивает список цитат из api',  async () => {
         const quote = quotesMock[0];
         const interaction: InteractionObject = {
             state: 'Получение списка цитат',
@@ -43,12 +49,12 @@ describe('Запросы к API цитат', () => {
             }
         };
 
-        return provider
+        await provider
             .addInteraction(interaction)
             .then(() => loadQuotesList());
     });
 
-    it('loadQuote() - запрашивает цитату по id', () => {
+    it('loadQuote() - запрашивает цитату по id', async () => {
         const quote = quotesMock[0];
         const interaction: InteractionObject = {
             state: 'Получение цитаты по id',
@@ -72,12 +78,12 @@ describe('Запросы к API цитат', () => {
             }
         };
 
-        return provider
+        await provider
             .addInteraction(interaction)
             .then(() => loadQuote(quote.id));
     });
 
-    it('createQuote() - создание цитаты', () => {
+    it('createQuote() - создание цитаты', async () => {
         const quote = quotesMock[0];
         const interaction: InteractionObject = {
             state: 'Создание цитаты',
@@ -104,7 +110,7 @@ describe('Запросы к API цитат', () => {
             }
         };
 
-        return provider
+        await provider
             .addInteraction(interaction)
             .then(() => createQuote({text: quote.text, author: quote.author}));
     });
