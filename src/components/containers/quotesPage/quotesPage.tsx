@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { IQuoteBlank } from '../../../interfaces/IQuote';
 import { quoteFetchAll, quoteCreate } from '../../../store/actions/quotes';
-import { quotesPageSelector } from '../../../store/selectors/quotes';
 import { UIButton } from '../../../ui-elements/button';
 import { QuoteCreateForm } from '../../pure/quoteCreateForm/quoteCreateForm';
 import { QuotesList } from '../../pure/quotesList/quotesList';
 import { IQuotesPageState, IQuotesPageDispatchProps, IQuotesPageProps } from './quotesPage.interface';
-import { QuotesPageTitle, QuotesPageContainer } from './qutesPage.elements';
+import { QuotesPageTitle, QuotesPageContainer } from './quotesPage.elements';
+import { quotesPageSelector } from './quotesPage.selector';
 
 export class QuotesPageComponent extends Component<IQuotesPageProps, IQuotesPageState> {
     static defaultState: IQuotesPageState = {formIsOpened: true};

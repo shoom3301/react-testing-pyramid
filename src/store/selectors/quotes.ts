@@ -36,16 +36,3 @@ export const getCurrentQuoteByLocation = createSelector(
         return quotes.find(({id}) => id === quoteId) || null;
     }
 );
-
-export const quotePageSelector = createSelector(
-    getQuoteIdByLocation,
-    getCurrentQuoteByLocation,
-    (quoteId: QuoteId | null, quote: IQuote | null) => {
-        return {
-            quoteId,
-            quote
-        }
-    }
-);
-
-export const quotesPageSelector = createSelector(getQuotesList, quotes => ({quotes}));
