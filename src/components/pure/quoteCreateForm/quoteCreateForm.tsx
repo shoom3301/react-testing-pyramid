@@ -49,12 +49,14 @@ export class QuoteCreateForm extends PureComponent<IQuoteCreateFormProps, IQuote
                 </Box>
                 <Box>
                     <Label>Автор:</Label>
-                    <UIInput value={this.state.author}
+                    <UIInput name="author"
+                             value={this.state.author}
                              onChange={this.onChangeAuthor}/>
                 </Box>
                 <Box>
                     <Label>Текст:</Label>
-                    <UIInput as="textarea"
+                    <UIInput name="text"
+                             as="textarea"
                              value={this.state.text}
                              onChange={this.onChangeText}/>
                 </Box>
