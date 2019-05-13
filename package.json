@@ -53,12 +53,15 @@
     ]
   },
   "jest": {
-    "watchPathIgnorePatterns": ["<rootDir>/pact/"]
+    "watchPathIgnorePatterns": [
+      "<rootDir>/pact/"
+    ]
   },
   "devDependencies": {
     "@pact-foundation/pact": "^8.2.2",
     "@pact-foundation/pact-node": "^8.2.0",
     "@types/react-test-renderer": "^16.8.1",
+    "axios-mock-adapter": "^1.16.0",
     "http-proxy-middleware": "^0.19.1",
     "react-test-renderer": "^16.8.6"
   }

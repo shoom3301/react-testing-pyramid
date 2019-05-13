@@ -1,0 +1,1 @@
+export const HTTP_ERROR_500 = new Error('Request failed with status code 500');

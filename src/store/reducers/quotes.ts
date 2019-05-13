@@ -16,11 +16,9 @@ export function quotes(state = defaultQuotesState, action: IAction<QuotesActionT
             const quote = (action as QuoteFetchOneSuccessAction).payload;
             const existing = state.find(({id}) => id === quote.id);
 
-            if (existing) {
-                return state;
-            }
-
-            return [...state, quote];
+            return existing
+                ? state
+                : [...state, quote];
         }
 
         default:

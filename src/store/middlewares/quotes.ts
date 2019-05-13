@@ -1,5 +1,5 @@
 import { call, put } from 'redux-saga/effects';
-import { createQuote, loadQuote, loadQuotesList } from '../../helpers/quotes/quotesHttp';
+import { createQuote, loadQuote, loadQuotesList } from 'helpers/quotes/quotesHttp';
 import {
     QuoteCreateAction,
     quoteCreateSuccess,
