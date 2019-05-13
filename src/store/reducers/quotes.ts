@@ -2,7 +2,7 @@ import { IAction } from '../../interfaces/IAction';
 import { QuotesActionTypes, QuoteFetchOneSuccessAction } from '../actions/quotes';
 import { defaultQuotesState, QuotesState } from '../states/quotes';
 
-export function quotes(state = defaultQuotesState, action: IAction<QuotesActionTypes>): QuotesState {
+export function quotesReducer(state = defaultQuotesState, action: IAction<QuotesActionTypes>): QuotesState {
     switch (action.type) {
         case QuotesActionTypes.FETCH_ALL_SUCCESS: {
             return [...action.payload];
