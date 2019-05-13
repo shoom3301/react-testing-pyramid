@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Pact } from '@pact-foundation/pact';
 import { InteractionObject, Matchers } from '@pact-foundation/pact';
 import { getProvider, pactConfig } from '../../../../pact/pactSetup';
-import { quotesMock } from '../../../mocks/qoutes.mock';
+import { quotesMock } from '../../../test-utils/mocks/qoutes.mock';
 import { loadQuotesList, loadQuote, createQuote } from '../quotesHttp';
 
 describe('Запросы к API цитат', () => {

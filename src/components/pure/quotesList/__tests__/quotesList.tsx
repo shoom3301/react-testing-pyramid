@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router';
-import { quotesMock } from '../../../../mocks/qoutes.mock';
+import { quotesMock } from '../../../../test-utils/mocks/qoutes.mock';
 import { quotePageRoute } from '../../../../router/routerPaths';
 import { QuotesList } from '../quotesList';
 import { QuoteItem, QuoteText, QuoteAuthor } from '../qutesList.elements';
