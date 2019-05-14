@@ -28,7 +28,7 @@ describe('QuotesPage - компонент страницы цитат', () => {
         wrapper = mount(<Provider store={store}><MemoryRouter><QuotesPage/></MemoryRouter></Provider>);
     });
 
-    it('Заголовок страницы содержит корректный текст', async () => {
+    it('Заголовок страницы содержит корректный текст', () => {
         expect(wrapper.find(QuotesPageTitle).text()).toBe('Цитаты великих людей');
     });
 
