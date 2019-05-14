@@ -1,6 +1,6 @@
 import { ShallowWrapper } from 'enzyme';
-import { UIButton } from '../../ui-elements/button';
-import { Box } from '../../components/pure/quoteCreateForm/qutesCreateForm.elements';
+import { UIButton } from 'ui-elements/button';
+import { Box } from 'components/pure/quoteCreateForm/qutesCreateForm.elements';
 
 export class QuoteCreateFormPo {
     readonly validAuthor = 'Jhon';
