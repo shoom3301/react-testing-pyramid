@@ -71,7 +71,8 @@ export class QuoteCreateForm extends PureComponent<IQuoteCreateFormProps, IQuote
                 </Box>
                 }
                 <Box>
-                    <UIButton onClick={this.createQuote}>Создать</UIButton>
+                    <UIButton id="create-quote-btn"
+                              onClick={this.createQuote}>Создать</UIButton>
                 </Box>
             </FormContainer>
         );

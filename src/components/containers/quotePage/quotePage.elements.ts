@@ -9,7 +9,7 @@ export const QuotePageContainer = styled.div`
     font-style: italic;
 `;
 
-export const QuoteText = styled.h1`
+export const QuoteText = styled.h1.attrs({className: 'quote-page-text'})`
     font-size: 36px;
 
     ::before {
@@ -21,7 +21,7 @@ export const QuoteText = styled.h1`
     }
 `;
 
-export const QuoteAuthor = styled.p`
+export const QuoteAuthor = styled.p.attrs({className: 'quote-page-author'})`
     font-size: 18px;
 `;
 

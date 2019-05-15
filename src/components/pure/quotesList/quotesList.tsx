@@ -6,7 +6,7 @@ import { QuoteItem, QuoteText, QuoteAuthor } from './qutesList.elements';
 export class QuotesList extends PureComponent<IQuotesProps> {
     render(): React.ReactElement {
         return (
-            <div>
+            <div id="quotes-list">
                 {this.props.quotes.map(({text, author, id}) => (
                     <QuoteItem key={id} to={quotePageRoute(id)}>
                         <QuoteText>{text}</QuoteText>

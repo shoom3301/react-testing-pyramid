@@ -36,7 +36,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "pact:publish": "node pact/pact.publish.js"
+    "pact:publish": "node pact/pact.publish.js",
+    "e2e": "cypress run"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -65,6 +66,7 @@
     "@types/react-test-renderer": "^16.8.1",
     "@types/redux-mock-store": "^1.0.1",
     "axios-mock-adapter": "^1.16.0",
+    "cypress": "^3.2.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.0",
     "http-proxy-middleware": "^0.19.1",
