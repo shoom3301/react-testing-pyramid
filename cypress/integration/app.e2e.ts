@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Цитаты великих людей', () => {
+describe('Quotes app', () => {
     const quotesListSelector = '#quotes-list';
     const createQuoteBtnSelector = '#create-quote-btn';
     const authorInpSelector = 'input[name="author"]';
@@ -15,13 +15,13 @@ describe('Цитаты великих людей', () => {
         cy.visit('http://localhost:3000');
     });
 
-    it('На главной странице должен отображаться список цитат', () => {
+    it('A list of quotes should be displayed on the page', () => {
         cy.get(quotesListSelector).children(quoteItemSelector).should($list => {
             expect($list.length).to.be.greaterThan(0);
         });
     });
 
-    it('Созданная цитата должна добавляться в конец списка', () => {
+    it('The created quote should be appended to list', () => {
         const seed = Date.now();
         const quoteText = `Some text ${seed}`;
         const quoteAuthor = `Some author ${seed}`;
@@ -36,7 +36,7 @@ describe('Цитаты великих людей', () => {
         cy.get('@lastQuoteItem').find(quoteAuthorSelector).should('have.text', quoteAuthor);
     });
 
-    it('При клике на цитату должна открываться страница этой цитаты', () => {
+    it('Quote page should be opened on click to quote item', () => {
         cy.get(quotesListSelector).children(quoteItemSelector).first().as('firstQuoteItem')
             .then($item => {
                 const text = $item.find(quoteTextSelector).text();
