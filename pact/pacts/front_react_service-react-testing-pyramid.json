@@ -1,0 +1,112 @@
+{
+  "consumer": {
+    "name": "Front react service"
+  },
+  "provider": {
+    "name": "react-testing-pyramid"
+  },
+  "interactions": [
+    {
+      "description": "Quotes list",
+      "providerState": "Requests quotes list",
+      "request": {
+        "method": "GET",
+        "path": "/api/quotes",
+        "query": "",
+        "headers": {
+          "Accept": "application/json, text/plain, */*"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": [
+          {
+            "id": 1,
+            "text": "Hakuna matata!",
+            "author": "Pumba"
+          }
+        ],
+        "matchingRules": {
+          "$.body": {
+            "min": 1
+          },
+          "$.body[*].*": {
+            "match": "type"
+          },
+          "$.body[*]": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "Quote by id",
+      "providerState": "Requests quote by id",
+      "request": {
+        "method": "GET",
+        "path": "/api/quote",
+        "query": "id=1",
+        "headers": {
+          "Accept": "application/json, text/plain, */*"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "id": 1,
+          "text": "Hakuna matata!",
+          "author": "Pumba"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "Quote",
+      "providerState": "Quote creating",
+      "request": {
+        "method": "POST",
+        "path": "/api/quote",
+        "query": "",
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "content-type": "application/json;charset=utf-8"
+        },
+        "body": {
+          "text": "Hakuna matata!",
+          "author": "Pumba"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "id": 1,
+          "text": "Hakuna matata!",
+          "author": "Pumba"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

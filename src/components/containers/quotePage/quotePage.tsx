@@ -26,7 +26,7 @@ export class QuotePageComponent extends Component<IQuotePageProps> {
                     <QuoteText>{this.props.quote.text}</QuoteText>
                     <QuoteAuthor>{this.props.quote.author}</QuoteAuthor>
                 </div>}
-                <ToMain to={mainRoute}>Вернуться к списку</ToMain>
+                <ToMain to={mainRoute}>To quotes list</ToMain>
             </QuotePageContainer>
         );
     }

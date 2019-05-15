@@ -12,7 +12,7 @@ import { QuotesPage } from '../quotesPage';
 import configureStore, { MockStoreEnhanced } from 'redux-mock-store';
 import { QuotesPageTitle } from '../quotesPage.elements';
 
-describe('QuotesPage - компонент страницы цитат', () => {
+describe('QuotesPage - quotes page component', () => {
     const mockStore = configureStore();
     const initialState = {quotes: quotesMock};
 
@@ -28,25 +28,25 @@ describe('QuotesPage - компонент страницы цитат', () => {
         wrapper = mount(<Provider store={store}><MemoryRouter><QuotesPage/></MemoryRouter></Provider>);
     });
 
-    it('Заголовок страницы содержит корректный текст', () => {
-        expect(wrapper.find(QuotesPageTitle).text()).toBe('Цитаты великих людей');
+    it('Title of page contains correct text', () => {
+        expect(wrapper.find(QuotesPageTitle).text()).toBe('Quotes app');
     });
 
-    it('Список цитат отображен и кол-во цитат сопадает с входными данными', () => {
+    it('Quotes list is displayed and count of displayed quotes matches the input data', () => {
         expect(wrapper.find(QuoteItem).length).toBe(quotesMock.length);
     });
 
-    it('Форма создания цитаты по-умолчанию открыта', () => {
+    it('Quote create form is opened by default', () => {
         expect(wrapper.find(QuoteCreateForm).length).toBe(1);
     });
 
-    it('При клике на кнопку "X" - форма закрывается', () => {
+    it('Form is closing when "X" button is clicked', () => {
         wrapper.find(CloseForm).first().simulate('click');
 
         expect(wrapper.find(QuoteCreateForm).length).toBe(0);
     });
 
-    it('При клике на конпку "Добавить цитату" - форма открывается',  () => {
+    it('Form is opening when "Create quote" button is clicked',  () => {
         wrapper.find(CloseForm).first().simulate('click');
         wrapper.find(UIButton).first().simulate('click');
 

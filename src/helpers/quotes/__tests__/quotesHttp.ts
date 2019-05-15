@@ -5,7 +5,7 @@ import { getProvider, pactConfig } from '../../../../pact/pactSetup';
 import { quotesMock } from '../../../test-utils/mocks/qoutes.mock';
 import { loadQuotesList, loadQuote, createQuote } from '../quotesHttp';
 
-describe('Запросы к API цитат', () => {
+describe('Http requests to quotes API', () => {
     let provider: Pact;
 
     beforeAll( async () => {
@@ -27,11 +27,11 @@ describe('Запросы к API цитат', () => {
         await provider.verify();
     });
 
-    it('loadQuotesList() - запрашивает список цитат из api',  async () => {
+    it('loadQuotesList() - requests a list of quotes',  async () => {
         const quote = quotesMock[0];
         const interaction: InteractionObject = {
-            state: 'Получение списка цитат',
-            uponReceiving: 'Список цитат',
+            state: 'Requests quotes list',
+            uponReceiving: 'Quotes list',
             withRequest: {
                 method: 'GET',
                 path: '/api/quotes',
@@ -54,11 +54,11 @@ describe('Запросы к API цитат', () => {
             .then(() => loadQuotesList());
     });
 
-    it('loadQuote() - запрашивает цитату по id', async () => {
+    it('loadQuote() - requests quote by id', async () => {
         const quote = quotesMock[0];
         const interaction: InteractionObject = {
-            state: 'Получение цитаты по id',
-            uponReceiving: 'Цитата по id',
+            state: 'Requests quote by id',
+            uponReceiving: 'Quote by id',
             withRequest: {
                 method: 'GET',
                 path: '/api/quote',
@@ -83,11 +83,11 @@ describe('Запросы к API цитат', () => {
             .then(() => loadQuote(quote.id));
     });
 
-    it('createQuote() - создание цитаты', async () => {
+    it('createQuote() - quote creating', async () => {
         const quote = quotesMock[0];
         const interaction: InteractionObject = {
-            state: 'Создание цитаты',
-            uponReceiving: 'Цитата',
+            state: 'Quote creating',
+            uponReceiving: 'Quote',
             withRequest: {
                 method: 'POST',
                 path: '/api/quote',

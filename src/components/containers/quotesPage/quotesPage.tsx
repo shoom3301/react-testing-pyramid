@@ -26,12 +26,12 @@ export class QuotesPageComponent extends Component<IQuotesPageProps, IQuotesPage
     render(): React.ReactElement {
         return (
             <QuotesPageContainer>
-                <QuotesPageTitle>Цитаты великих людей</QuotesPageTitle>
+                <QuotesPageTitle>Quotes app</QuotesPageTitle>
                 <QuotesList quotes={this.props.quotes}/>
                 <div>
                     { this.state.formIsOpened
                         ? <QuoteCreateForm onClose={this.toggleForm} onSubmit={this.props.createQuote}/>
-                        : <UIButton onClick={this.toggleForm}>Добавить цитату</UIButton>
+                        : <UIButton onClick={this.toggleForm}>Create quote</UIButton>
                     }
                 </div>
             </QuotesPageContainer>

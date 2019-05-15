@@ -1,54 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`QuotesList - компонент списка цитат Snapshot of component is match 1`] = `
-<div>
+exports[`QuotesList - quotes list component Snapshot of component is match 1`] = `
+<div
+  id="quotes-list"
+>
   <a
-    className="sc-bdVaJa dvUrPw"
+    className="sc-bdVaJa quote-item dvUrPw"
     href="/quote/1"
     onClick={[Function]}
   >
     <span
-      className="sc-bwzfXH cgDlUj"
+      className="sc-bwzfXH quote-text cgDlUj"
     >
       Hakuna matata!
     </span>
     <br />
     <span
-      className="sc-htpNat kaHVia"
+      className="sc-htpNat quote-author kaHVia"
     >
       Pumba
     </span>
   </a>
   <a
-    className="sc-bdVaJa dvUrPw"
+    className="sc-bdVaJa quote-item dvUrPw"
     href="/quote/2"
     onClick={[Function]}
   >
     <span
-      className="sc-bwzfXH cgDlUj"
+      className="sc-bwzfXH quote-text cgDlUj"
     >
       Developers developers developers!
     </span>
     <br />
     <span
-      className="sc-htpNat kaHVia"
+      className="sc-htpNat quote-author kaHVia"
     >
       Steve Ballmer
     </span>
   </a>
   <a
-    className="sc-bdVaJa dvUrPw"
+    className="sc-bdVaJa quote-item dvUrPw"
     href="/quote/3"
     onClick={[Function]}
   >
     <span
-      className="sc-bwzfXH cgDlUj"
+      className="sc-bwzfXH quote-text cgDlUj"
     >
       Just do it!
     </span>
     <br />
     <span
-      className="sc-htpNat kaHVia"
+      className="sc-htpNat quote-author kaHVia"
     >
       Shia LaBeouf
     </span>

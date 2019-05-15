@@ -4,7 +4,7 @@ import { initEnzyme } from 'test-utils/initEnzyme';
 import { QuoteCreateForm } from '../quoteCreateForm';
 import { QuoteCreateFormPo } from 'test-utils/pageObjects/quoteCreateForm.po';
 
-describe('QuoteCreateForm - форма создания цитаты', () => {
+describe('QuoteCreateForm - quote create form component', () => {
     let onClose: jest.Mock;
     let onSubmit: jest.Mock;
     let wrapper: ShallowWrapper;
@@ -21,44 +21,44 @@ describe('QuoteCreateForm - форма создания цитаты', () => {
         pageObject = new QuoteCreateFormPo(wrapper);
     });
 
-    describe('Валидация формы', () => {
-        it('По-умолчанию текст ошибки валидации не отображается', () => {
+    describe('Form validation', () => {
+        it('Text of error validation is not displayed by default', () => {
             expect(pageObject.getErrorBoxes().length).toBe(0);
         });
 
-        describe('Ошибка валидации отображается если:', () => {
-            it('Длинна имени автора менее 2 символов', () => {
+        describe('Validation error is displayed, when:', () => {
+            it('Author name length less than 2 characters', () => {
                 pageObject.changeAuthor('1');
 
                 expect(pageObject.getErrorBoxes().length).toBe(1);
             });
 
-            it('Длинна текста менее 2 символов', () => {
+            it('Text less than 2 characters', () => {
                 pageObject.changeText('2');
 
                 expect(pageObject.getErrorBoxes().length).toBe(1);
             });
 
-            it('Длинна имени автора более 64 символов', () => {
+            it('Author name length greater than 64 characters', () => {
                 pageObject.changeAuthor('g'.repeat(65));
 
                 expect(pageObject.getErrorBoxes().length).toBe(1);
             });
 
-            it('Длинна текста более 256 символов', () => {
+            it('Text length greater than 256 characters', () => {
                 pageObject.changeText('l'.repeat(257));
 
                 expect(pageObject.getErrorBoxes().length).toBe(1);
             });
 
-            it('Автор незаполнен', () => {
+            it('Author is not filled', () => {
                 pageObject.changeText(pageObject.validText);
                 pageObject.changeAuthor('');
 
                 expect(pageObject.getErrorBoxes().length).toBe(1);
             });
 
-            it('Текст незаполнен', () => {
+            it('Text is not filled', () => {
                 pageObject.changeAuthor(pageObject.validText);
                 pageObject.changeText('');
 
@@ -66,13 +66,13 @@ describe('QuoteCreateForm - форма создания цитаты', () => {
             });
         });
 
-        describe('Ошибка валидации скрывается если', () => {
+        describe('Validation error is not displayed, when', () => {
             beforeEach(() => {
                 pageObject.changeAuthor('a');
                 pageObject.changeText('');
             });
 
-            it('Длинна имени автора > 2 & < 64 и длинна текст > 2 & < 256', () => {
+            it('Length of author name > 2 & < 64 and length of text > 2 & < 256', () => {
                 expect(pageObject.getErrorBoxes().length).toBe(1);
 
                 pageObject.changeAuthor(pageObject.validAuthor);
@@ -82,15 +82,15 @@ describe('QuoteCreateForm - форма создания цитаты', () => {
             });
         });
 
-        describe('Отправка формы', () => {
-            describe('Если форма валидна', () => {
-                it('Отправляются введенные данные', () => {
+        describe('Form submitting', () => {
+            describe('When form is valid', () => {
+                it('The entered data is sent', () => {
                     pageObject.fillAndSubmitForm();
 
                     expect(onSubmit.mock.calls.length).toBe(1);
                 });
 
-                it('Поля формы очищаются', () => {
+                it('Fields of form cleans', () => {
                     pageObject.fillAndSubmitForm();
 
                     expect(pageObject.getAuthorInput().props().value).toBe('');
@@ -98,8 +98,8 @@ describe('QuoteCreateForm - форма создания цитаты', () => {
                 });
             });
 
-            describe('Если форма невалидна', () => {
-                it('Введенные данные не отправляются', () => {
+            describe('When form is not valid', () => {
+                it('The entered data is not sent', () => {
                     pageObject.changeAuthor('a');
                     pageObject.changeText('b');
                     pageObject.submitForm();

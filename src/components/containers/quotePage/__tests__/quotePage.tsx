@@ -10,7 +10,7 @@ import { generateState } from '../../../../test-utils/generateState';
 import { QuotePage } from '../quotePage';
 import { QuoteText, QuoteAuthor, ToMain } from '../quotePage.elements';
 
-describe('QuotePage - компонент страницы цитаты', () => {
+describe('QuotePage - quote page component', () => {
     const mockStore = configureStore();
     const [currentQuote] = quotesMock;
     const currentPath = quotePageRoute(currentQuote.id);
@@ -36,15 +36,15 @@ describe('QuotePage - компонент страницы цитаты', () => {
         );
     });
 
-    it('Отображенный текст цитаты соот-ет ожидаемому', () => {
+    it('Displayed text of quote is correct', () => {
         expect(wrapper.find(QuoteText).first().text()).toBe(currentQuote.text);
     });
 
-    it('Отображенное имя автора цитаты соот-ет ожидаемому', () => {
+    it('Displayed author of quote is correct', () => {
         expect(wrapper.find(QuoteAuthor).first().text()).toBe(currentQuote.author);
     });
 
-    it('При клике на "Вернуться к списку" роутит на страницу списка цитат', () => {
+    it('Page should be changed to main on click to "To quotes list"', () => {
         wrapper.find(ToMain).first().simulate('click', {button: 0});
 
         expect(wrapper.text()).toBe(mainPageText);

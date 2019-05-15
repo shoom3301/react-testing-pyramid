@@ -44,17 +44,17 @@ export class QuoteCreateForm extends PureComponent<IQuoteCreateFormProps, IQuote
         return (
             <FormContainer>
                 <Box>
-                    <Title>Добавить цитату</Title>
+                    <Title>Add quote</Title>
                     <CloseForm onClick={this.props.onClose}>X</CloseForm>
                 </Box>
                 <Box>
-                    <Label>Автор:</Label>
+                    <Label>Author:</Label>
                     <UIInput name="author"
                              value={this.state.author}
                              onChange={this.onChangeAuthor}/>
                 </Box>
                 <Box>
-                    <Label>Текст:</Label>
+                    <Label>Text:</Label>
                     <UIInput name="text"
                              as="textarea"
                              value={this.state.text}
@@ -64,15 +64,15 @@ export class QuoteCreateForm extends PureComponent<IQuoteCreateFormProps, IQuote
                 && <Box error>
                     <p>
                         {`
-                        Обязательно заполните текст и автора цитаты.<br />
-                        Длина текста >=2 && <=256, длина автора >=2 && <=64
+                        Text and author fields is required.<br />
+                        Text length must be >=2 && <=256, author length must be >=2 && <=64
                         `}
                     </p>
                 </Box>
                 }
                 <Box>
                     <UIButton id="create-quote-btn"
-                              onClick={this.createQuote}>Создать</UIButton>
+                              onClick={this.createQuote}>Create</UIButton>
                 </Box>
             </FormContainer>
         );

@@ -6,7 +6,7 @@ import { QuotesList } from '../quotesList';
 import { QuoteItem, QuoteText, QuoteAuthor } from '../qutesList.elements';
 import { create, ReactTestRenderer, ReactTestInstance } from 'react-test-renderer';
 
-describe('QuotesList - компонент списка цитат', () => {
+describe('QuotesList - quotes list component', () => {
     const [firstQuote] = quotesMock;
 
     let container: ReactTestRenderer;
@@ -30,27 +30,27 @@ describe('QuotesList - компонент списка цитат', () => {
      * TODO: other tests is legacy
      * @see https://www.valentinog.com/blog/testing-react/
      */
-    it('Количество отображенных цитат совпадает с входными данными', async () => {
+    it('Count of displayed quotes matches the input data',  () => {
         const quotesList = instance.findAllByType(QuoteItem);
 
         expect(quotesList.length).toBe(quotesMock.length);
     });
 
-    it('Текст первой цитаты соответствует', async () => {
+    it('Text of first quote is correct', () => {
         const [quoteText] = instance.findAllByType(QuoteText);
         const text = quoteText.props.children;
 
         expect(text).toBe(firstQuote.text);
     });
 
-    it('Имя автора первой цитаты соответствует', async () => {
+    it('Author of first quote is correct', () => {
         const [quoteAuthor] = instance.findAllByType(QuoteAuthor);
         const text = quoteAuthor.props.children;
 
         expect(text).toBe(firstQuote.author);
     });
 
-    it('У первой цитаты установленна ссылка на ее страницу', async () => {
+    it('First quote item have link to its page', () => {
         const [quoteItem] = instance.findAllByType(QuoteItem);
 
         expect(quoteItem.props.to).toBe(quotePageRoute(firstQuote.id));
