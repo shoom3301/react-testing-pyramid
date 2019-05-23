@@ -57,7 +57,7 @@ describe('Selectors for quotes', () => {
         expect(result).toBeNull();
     });
 
-    it('getCurrentQuoteByLocation() -  must return null, if quote with id from location is not exist', () => {
+    it('getCurrentQuoteByLocation() - must return null, if quote with id from location is not exist', () => {
         const state = generateState(quotePageRoute(8));
         const result = getCurrentQuoteByLocation(state);
 

@@ -1,53 +1,96 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## React testing pyramid
 
-## Available Scripts
+|        Main page (quotes list)      |              Quote page               |
+| ----------------------------------- | ------------------------------------- |
+| ![main page](assets/main_page.png)  | ![quote_page](assets/quote_page.png)  |
 
-In the project directory, you can run:
+### Actions:
+1. The quotes list display
+2. Open/close the "add quote" form
+3. Create new quote (+ form validation)
+4. Open the quote page
+5. Back to the main page
 
-### `npm start`
+### Tests (e2e / integration / contract / unit)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### E2E:
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+##### [Quotes app:](cypress/integration/app.e2e.ts)
 
-### `npm test`
+1. A list of quotes should be displayed on the page
+2. The created quote should be appended to list
+3. Quote page should be opened on click to quote item
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Integration:
 
-### `npm run build`
+##### [Quote page:](src/components/containers/quotePage/__tests__/quotePage.tsx)
+1. Displayed text of quote is correct
+2. Displayed author of quote is correct
+3. Page should be changed to main on click to "To quotes list"
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##### [Main page:](src/components/containers/quotesPage/__tests__/quotesPage.tsx)
+1. Title of page contains correct text
+2. Quotes list is displayed and count of displayed quotes matches the input data
+3. Quote create form is opened by default
+4. Form is closing when "X" button is clicked
+5. Form is opening when "Create quote" button is clicked
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+##### [Quotes list:](src/components/pure/quotesList/__tests__/quotesList.tsx)
+1. Count of displayed quotes matches the input data
+2. Text of first quote is correct
+3. Author of first quote is correct
+4. First quote item have link to its page
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+##### [Quote create form:](src/components/pure/quotesList/__tests__/quotesList.tsx)
+1. Text of error validation is not displayed by default
+2. Validation error is displayed, when:
+    1. Author name length less than 2 characters
+    2. Text less than 2 characters
+    3. Author name length greater than 64 characters
+    4. Text length greater than 256 characters
+    5. Author is not filled
+    6.Text is not filled
+3. Validation error is not displayed, when:
+    1. length of author name > 2 & < 64 and length of text > 2 & < 256
+4. Form submitting
+    1. When form is valid
+        1. The entered data is sent
+        2. Fields of form cleans
+    4. When form is not valid
+        1. The entered data is not sent
 
-### `npm run eject`
+#### Contract:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+##### [Quotes API:](src/helpers/quotes/__tests__/quotesHttp.ts)
+1. loadQuotesList() - requests a list of quotes
+2. loadQuote() - requests quote by id
+3. createQuote() - quote creating
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Unit:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+##### [Store middlewares:](src/store/middlewares/__tests__/quotes.ts)
+1. Quote creation
+    1. A quote should be created on server and be added to store by CREATED_SUCCESS
+    2. When server responds error, action CREATED_FAIL should be created
+2. Quote fetching
+    1. Quote should be fetched from server and be added to store by FETCH_ONE_SUCCESS
+    2. When server responds error, action FETCH_ONE_FAIL should be created
+3. Quotes list fetching
+    1. Quotes list should be fetched from server and be added to store by FETCH_ALL_SUCCESS
+    2. When server responds error, action FETCH_ALL_FAIL should be created
+    
+##### [Store reducers:](src/store/reducers/__tests__/quotes.ts)
+1. FETCH_ALL_SUCCESS must replace quotes list in store
+2. CREATED_SUCCESS must append quote to the list in store
+3. FETCH_ONE_SUCCESS must append quote to the list in store, if quote is not exist in list
+4. FETCH_ONE_SUCCESS must do not append quote to the list in store, if quote is exist in list
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Server API
-
-In the `api` directory, you can run:
-
-### `npm start`
-
-Runs the server in the development mode.
-Open [http://localhost:8041](http://localhost:8041) to view it in the browser.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+##### [Store selectors:](src/store/selectors/__tests__/quotes.ts)
+1. getQuotesList() - must return list of quotes
+2. getQuoteIdMatch() - must return match of quoteId from location, if quoteId is exist
+3. getQuoteIdMatch() - must return null, if quoteId is not exist
+4. getQuoteIdByLocation() - must return quoteId from location, if quoteId is exist and valid
+5. getQuoteIdByLocation() - must return null, if quoteId is not exist in location
+6. getCurrentQuoteByLocation() - must return quote from store, if quote with id from location is exist
+7. getCurrentQuoteByLocation() - must return null, if quoteId from location is not exist or invalid
+8. getCurrentQuoteByLocation() - must return null, if quote with id from location is not exist

@@ -65,7 +65,7 @@ describe('Middlewares for quotes', () => {
     describe('Quotes list fetching', () => {
         const fetchAllAction = quoteFetchAll();
 
-        it(`Quotes list should be fetched from server and be added to store by  ${QuotesActionTypes.FETCH_ALL_SUCCESS}`, () => {
+        it(`Quotes list should be fetched from server and be added to store by ${QuotesActionTypes.FETCH_ALL_SUCCESS}`, () => {
             mock.onGet(API_QUOTES_PATH).reply(200, [quote]);
 
             return recordSaga(quotesFetching, fetchAllAction)
