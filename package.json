@@ -15,7 +15,7 @@
     "@types/react-router-dom": "^4.3.3",
     "@types/redux-saga": "^0.10.5",
     "@types/styled-components": "^4.1.14",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "connected-react-router": "^6.4.0",
     "history": "^4.9.0",
     "react": "^16.8.6",
