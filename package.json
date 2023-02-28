@@ -60,13 +60,13 @@
     ]
   },
   "devDependencies": {
-    "@pact-foundation/pact": "^8.2.2",
-    "@pact-foundation/pact-node": "^8.2.0",
+    "@pact-foundation/pact": "^10.4.1",
+    "@pact-foundation/pact-node": "^10.17.7",
     "@types/enzyme": "^3.9.1",
     "@types/react-test-renderer": "^16.8.1",
     "@types/redux-mock-store": "^1.0.1",
     "axios-mock-adapter": "^1.16.0",
-    "cypress": "^3.2.0",
+    "cypress": "^12.7.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.0",
     "http-proxy-middleware": "^0.19.1",
